@@ -1,14 +1,14 @@
-# Parcel
+# Elixir/Phoenix/Parcel Example
 
-This app is an example Elixir + Phoenix app with (Parcel)[https://parceljs.org/]
+This app is an example Elixir + Phoenix app with [Parcel](https://parceljs.org/)
 as the bundler for front-end assets instead of brunch.
 
 I think Parcel is the bundler that best matches Phoenix's low-configuration
 extensibility!
 
-Although this repo has an example web app using parcel, I think it's harder
+Although this repo has an example web app using parcel, I think it's difficult
 to clone this repo and do a bunch of find and replaces for your desired app
-and module names than it is to follow these steps:
+and module names. Instead, follow the below steps:
 
 ```
 mkdir my-directory
@@ -32,7 +32,15 @@ Now open package.json and replace the scripts section with:
   }
 ```
 
+And open `config/dev.exs` and replace `watchers:` at the end of the first config
+block with:
+```
+watchers: [node: ["node_modules/parcel-bundler/bin/cli.js", "watch", "web/static/js/app.js", "--out-dir", "priv/static/js"]]
+```
+
 That's it! Parcel is awesome!
+
+## Babel
 
 Now, to do some React / ES6, just:
 ```
@@ -66,6 +74,6 @@ Check out more recipes here: https://parceljs.org/recipes.html. I like Preact.
 
 Everything just works!
 
-# TODO
+## TODO
 
 - [ ] Multiple input -> output entry points
